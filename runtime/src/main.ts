@@ -1,15 +1,4 @@
 import './style.css'
+import OpenGFX from "./core/index.ts"
 
-function loadAssets() {
-
-}
-
-function displaySplashScreen() {
-  document.querySelector<HTMLDivElement>('#rt-portal')!.innerHTML = `
-    <h1>OpenGFX Engine</h1>
-    `
-}
-
-document.querySelector<HTMLDivElement>('#rt-portal')!.innerHTML = `
-    <h1>OpenGFX</h1>
-`
+OpenGFX.startup(document.getElementById('rt-portal')! as HTMLDivElement)
