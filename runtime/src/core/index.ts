@@ -1,5 +1,6 @@
 import GFXSplashScreenManager from "./splash.ts";
 import OPEN_GFX_SPLASH_LOGO from "../assets/OpenGFX Splash.svg"
+import WebGPUPipeline from "./pipeline/webgpu";
 
 class OpenGFXEngine {
   htmlContainer!: HTMLDivElement;
@@ -20,7 +21,9 @@ class OpenGFXEngine {
     splashScreenManager.createSplash(OPEN_GFX_SPLASH_LOGO, "#1f232d", 3)
 
     splashScreenManager.afterSplashes(() => {
-      this.htmlContainer.innerHTML = `<div>Hello World from OpenGFX Runtime<button onclick="window.location.reload()">Reload Page</button></div>`
+      const pipeline = new WebGPUPipeline(this.htmlContainer)
+
+      pipeline.init()
     })
 
     splashScreenManager.displaySplash(htmlContainer)
