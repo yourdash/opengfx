@@ -13,7 +13,7 @@ export default class WebGPUPipeline {
 
   init() {
     this.htmlContainer.innerHTML = `
-      <div id="render-container">
+      <div id="render-container"></div>
     `
 
     let initialLayer = new WebGPULayer()

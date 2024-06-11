@@ -1,0 +1,14 @@
+{
+  "name": "opengfx",
+  "version": "1.0.0",
+  "description": "OpenGFX Monorepo",
+  "main": "index.js",
+  "repository": "git@github.com:/yourdash/opengfx.git",
+  "author": "Ewsgit <ewsgit@duck.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "editor",
+    "runtime"
+  ]
+}

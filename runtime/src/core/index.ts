@@ -1,5 +1,6 @@
 import GFXSplashScreenManager from "./splash.ts";
-import OPEN_GFX_SPLASH_LOGO from "../assets/OpenGFX Splash.svg"
+// @ts-ignore
+import OPEN_GFX_SPLASH_LOGO from "../assets/OpenGFX_Splash.svg"
 import WebGPUPipeline from "./pipeline/webgpu";
 
 class OpenGFXEngine {
