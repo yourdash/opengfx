@@ -75,11 +75,11 @@ export default class WindowManager {
     this.window.webContents.on(event, listener)
   }
 
-  onBeforeSendHeaders(listener: () => void) {
+  onBeforeSendHeaders(listener: ((details: Electron.OnBeforeSendHeadersListenerDetails, callback: (beforeSendResponse: Electron.BeforeSendResponse) => void) => void) | null) {
     this.window.webContents.session.webRequest.onBeforeSendHeaders(listener)
   }
 
-  onHeadersReceived(listener: () => void) {
+  onHeadersReceived(listener: (( details: Electron.OnHeadersReceivedListenerDetails, callback: (headersReceivedResponse: Electron.HeadersReceivedResponse) => void) => void) | null) {
     this.window.webContents.session.webRequest.onHeadersReceived(listener)
   }
 

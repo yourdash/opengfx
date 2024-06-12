@@ -1,6 +1,10 @@
+import React from 'react';
 import './assets/main.css'
-import * as React from "react-dom"
+import { createRoot } from 'react-dom/client';
 
-React.createRoot(document.getElementById("app"), <>
+
+const root = createRoot(document.getElementById("app")!)
+
+root.render(<>
     Hello world from ReactJS
 </>)
