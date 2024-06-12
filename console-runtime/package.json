@@ -1,0 +1,29 @@
+{
+  "name": "@yourdash/opengfx-console-runtime",
+  "version": "0.0.1",
+  "description": "The OpenGFX Console's runtime application",
+  "main": "./out/main/index.js",
+  "repository": "https://github.com/yourdash/opengfx",
+  "author": "Ewsgit <ewsgit@ewsgit.uk>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron-vite preview",
+    "dev": "electron-vite dev"
+  },
+  "dependencies": {
+    "@electron-toolkit/utils": "^3.0.0",
+    "@types/node": "^20.14.2",
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3",
+    "electron-toolkit": "^1.0.24",
+    "electron-vite": "^2.2.0",
+    "electron-webpack": "^2.8.2",
+    "parse-duration": "^1.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sass": "^1.77.5",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.13"
+  }
+}
