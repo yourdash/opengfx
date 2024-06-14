@@ -11,6 +11,11 @@ export default class WebGPULayer {
       console.log(gpu);
 
       const context = this.canvas.getContext('webgpu');
+      if (context === null) {
+        console.error('WebGPU not supported on this browser!');
+        return null;
+      }
+
       const presentationFormat = navigator.gpu.getPreferredCanvasFormat();
       context.configure({
                           device, format: presentationFormat,

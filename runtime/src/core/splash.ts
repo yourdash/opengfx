@@ -7,10 +7,13 @@ export default class GFXSplashScreenManager {
     foregroundImage: string, // seconds to wait until next splash
     time: number,
   }[];
-  private afterSplashesCallback: (() => void) | undefined;
+  private afterSplashesCallback!: (() => void);
 
   constructor() {
     this.splashScreens = []
+    this.afterSplashes(() => {
+      console.warn("no callback found for GFXSplashScreenManager")
+    })
 
     return this;
   }
@@ -22,6 +25,12 @@ export default class GFXSplashScreenManager {
   }
 
   displaySplash(splashContainer: HTMLDivElement, splashIndex: number = 0) {
+    if (import.meta.env.DEV) {
+      console.info("Skipping splash screens as we are running in DEV mode.")
+
+      return this.afterSplashesCallback()
+    }
+
     console.debug('Begin OpenGFX DisplaySplash');
 
     splashContainer.innerHTML = `
@@ -35,7 +44,7 @@ export default class GFXSplashScreenManager {
       if (splashIndex + 1 < this.splashScreens.length) {
         this.displaySplash(splashContainer, splashIndex + 1)
       } else {
-        this.afterSplashesCallback?.()
+        this.afterSplashesCallback()
       }
     }, this.splashScreens[splashIndex].time * 1000)
 
