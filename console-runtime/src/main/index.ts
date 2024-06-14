@@ -16,6 +16,22 @@ let restarting = false
 // fixes https://github.com/electron/electron/issues/19775
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 
+function UpsertKeyValue(obj: any, keyToChange: any, value: any) {
+	const keyToChangeLower = keyToChange.toLowerCase()
+	for (const key of Object.keys(obj)) {
+		if (key.toLowerCase() === keyToChangeLower) {
+			// Reassign old key
+			// @ts-ignore
+			obj[key] = value
+			// Done
+			return
+		}
+	}
+	// Insert at end instead
+	// @ts-ignore
+	obj[keyToChange] = value
+}
+
 let window: WindowManager
 
 function setupWindow() {
@@ -80,7 +96,6 @@ function registerShortcuts() {
 	})
 
 	globalShortcut.register('CommandOrControl+Shift+K', async () => {
-		store.set('settings.autoLoad', false)
 		window.loadMain()
 	})
 
@@ -131,14 +146,7 @@ function registerIpc() {
 					await window.clearCache()
 					break
 				case 'clearStorage':
-					await window.clearStorageData({
-						storages: [
-							'appcache',
-							'cookies',
-							'localstorage',
-							'cachestorage'
-						]
-					})
+					await window.clearStorageData()
 					break
 				case 'getDisplays':
 					data = screen.getAllDisplays().map(display => {
@@ -147,9 +155,6 @@ function registerIpc() {
 							label: display.label
 						}
 					})
-					break
-				case 'settingsUpdated':
-					onSettingsChanged(...args)
 					break
 				default:
 					break
@@ -212,7 +217,6 @@ if (!gotTheLock) {
 
 		registerShortcuts()
 		registerIpc()
-		setupStore()
 		setupWindow()
 	})
 

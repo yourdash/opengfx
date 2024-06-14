@@ -9,6 +9,7 @@
   "private": true,
   "workspaces": [
     "editor",
-    "runtime"
+    "runtime",
+    "console-runtime"
   ]
 }

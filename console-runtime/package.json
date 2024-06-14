@@ -14,6 +14,7 @@
   "dependencies": {
     "@electron-toolkit/utils": "^3.0.0",
     "@types/node": "^20.14.2",
+    "@types/react-dom": "^18.3.0",
     "electron": "^31.0.0",
     "electron-builder": "^24.13.3",
     "electron-toolkit": "^1.0.24",
